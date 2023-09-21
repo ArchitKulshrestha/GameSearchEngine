@@ -2,6 +2,11 @@
 import useData from "./Usedata";
 // import axios from "axios";
 
-const useGame = (SelectedGenre) => useData("/games",{params:{genres:SelectedGenre?.id}},[SelectedGenre?.id]);
+const useGame = (SelectedGenre, SelectedPlatform) =>
+  useData(
+    "/games",
+    { params: { genres: SelectedGenre?.id, platforms: SelectedPlatform?.id } },
+    [SelectedGenre?.id, SelectedPlatform?.id]
+  );
 
 export default useGame;

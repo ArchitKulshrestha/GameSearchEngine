@@ -8,6 +8,7 @@ import {
   Heading,
   Icon,
   Image,
+ 
 } from "@chakra-ui/react";
 import {
   FaWindows,
@@ -20,7 +21,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import getCroppedImageUrl  from "../services/imageUrl";
+import getCroppedImageUrl from "../services/imageUrl";
 
 const GameCards = ({ game }) => {
   const platformsIcons = {
@@ -34,13 +35,18 @@ const GameCards = ({ game }) => {
     nintendo: SiNintendo,
     web: BsGlobe,
   };
-  const color = game.metacritic > 80 ? "green" : game.metacritic > 60 ? "yellow" : "red";     
+  const color =
+    game.metacritic > 80 ? "green" : game.metacritic > 60 ? "yellow" : "red";
 
   return (
     <Card borderRadius={15} overflow={"hidden"}>
-      <Image  objectFit={"cover"}  src={getCroppedImageUrl(game.background_image)} alt={game.name} />
+      <Image
+        objectFit={"cover"}
+        src={getCroppedImageUrl(game.background_image)}
+        alt={game.name}
+      />
       <CardBody>
-        <Heading fontSize={"2xl"}>{game.name}</Heading>
+        <Heading fontSize={"20px"}>{game.name}</Heading>
         <HStack justifyContent={"space-between"}>
           <Container padding={0} margin={0}>
             {game.parent_platforms.map((platform) => (
@@ -50,11 +56,24 @@ const GameCards = ({ game }) => {
                 marginY={2}
                 marginX={1}
                 color={"gray.400"}
-                fontSize={"1rem"}
+                fontSize={"14px"}
               />
             ))}
           </Container>
-          <Badge fontSize={'14px'} paddingX={2} borderRadius={'5px'} colorScheme={color}>{game.metacritic}</Badge>
+          {game.metacritic === null ? (
+            <Badge fontSize={"14px"}
+              paddingX={2}
+              borderRadius={"5px"}
+              colorScheme='gray'>No Score</Badge>
+          ) : (
+            <Badge
+              fontSize={"14px"}
+              paddingX={2}
+              borderRadius={"5px"}
+              colorScheme={color}>
+              {game.metacritic}
+            </Badge>
+          )}
         </HStack>
       </CardBody>
     </Card>
