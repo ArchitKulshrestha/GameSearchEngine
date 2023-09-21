@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import {
   Button,
@@ -12,14 +13,15 @@ import {
 import useGenre from "../hooks/useGenre";
 import getCroppedImageUrl from "../services/imageUrl";
 
-const GenreList = () => {
-  const { genres, isLoading } = useGenre();
+
+const GenreList = ({OnSelectedGenre,SelectedGenre}) => {
+  const { Data, isLoading } = useGenre('/genres');
   return (
     <>
     <Heading padding={4} fontSize={"2xl"}>Genres</Heading>
       {isLoading && <Spinner size="lg" />}
       <List padding={1.5} styleType="none">
-        {genres.map((genre) => (
+        {Data.map((genre) => (
           <ListItem padding={1.5} key={genre.id}>
             <HStack>
               <Image
@@ -29,7 +31,7 @@ const GenreList = () => {
                 marginX={1}
                 src={getCroppedImageUrl(genre.image_background)}
               />
-              <Button onClick={() => console.log(genre)} variant={"link"}>
+              <Button fontWeight={genre.id==SelectedGenre?.id ?'extrabold':'normal'} onClick={()=>OnSelectedGenre(genre)} variant={"link"}>
                 {genre.name}
               </Button>
             </HStack>
