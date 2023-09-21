@@ -38,7 +38,7 @@ const GameCards = ({ game }) => {
 
   return (
     <Card borderRadius={15} overflow={"hidden"}>
-      <Image src={getCroppedImageUrl(game.background_image)} alt={game.name} />
+      <Image  objectFit={"cover"}  src={getCroppedImageUrl(game.background_image)} alt={game.name} />
       <CardBody>
         <Heading fontSize={"2xl"}>{game.name}</Heading>
         <HStack justifyContent={"space-between"}>
@@ -50,7 +50,7 @@ const GameCards = ({ game }) => {
                 marginY={2}
                 marginX={1}
                 color={"gray.400"}
-                fontSize={"1.1rem"}
+                fontSize={"1rem"}
               />
             ))}
           </Container>
