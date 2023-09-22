@@ -6,6 +6,7 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 import SortList from "./components/SortList";
+import GameHeading from "./components/GameHeading";
 
 function App() {
   // const [SelectedGenre, setSelectedGenre] = useState(null);
@@ -38,6 +39,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem gridArea="main">
+          <GameHeading gameQuery={gameQuery} />
           <HStack>
             <PlatformSelector
               OnSelectPlatform={(platform) =>
