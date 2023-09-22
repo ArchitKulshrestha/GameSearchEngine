@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Grid, GridItem, Show,HStack  } from "@chakra-ui/react";
+import { Grid, GridItem, Show, HStack } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import Gamegrid from "./components/Gamegrid";
 import GenreList from "./components/GenreList";
@@ -8,9 +8,13 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortList from "./components/SortList";
 
 function App() {
-  const [SelectedGenre, setSelectedGenre] = useState(null);
-  const [SelectedPlatform, setSelectedPlatform] = useState(null);
- 
+  // const [SelectedGenre, setSelectedGenre] = useState(null);
+  // const [SelectedPlatform, setSelectedPlatform] = useState(null);
+  const [gameQuery, setGameQuery] = useState({
+    genre: null,
+    platform: null,
+    sortOrder: "",
+  });
 
   return (
     <>
@@ -25,24 +29,22 @@ function App() {
         <Show above="lg">
           <GridItem gridArea="aside" paddingLeft={3}>
             <GenreList
-              SelectedGenre={SelectedGenre}
-              OnSelectedGenre={(genre) => setSelectedGenre(genre)}
+              SelectedGenre={gameQuery.genre}
+              OnSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
             />
           </GridItem>
         </Show>
         <GridItem gridArea="main">
           <HStack>
             <PlatformSelector
-              OnSelectPlatform={(platform) => setSelectedPlatform(platform)}
-              SelectedPlatform={SelectedPlatform}
+              OnSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+              SelectedPlatform={gameQuery.platform}
             />
-            <SortList  />
+            <SortList />
           </HStack>
-          <Gamegrid
-            SelectedPlatform={SelectedPlatform}
-            SelectedGenre={SelectedGenre}
-            
-          />
+          <Gamegrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
     </>
