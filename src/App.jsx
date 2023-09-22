@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, Show,HStack  } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import Gamegrid from "./components/Gamegrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
-
-
+import SortList from "./components/SortList";
 
 function App() {
   const [SelectedGenre, setSelectedGenre] = useState(null);
   const [SelectedPlatform, setSelectedPlatform] = useState(null);
+ 
+
   return (
     <>
       <Grid
@@ -30,8 +31,18 @@ function App() {
           </GridItem>
         </Show>
         <GridItem gridArea="main">
-          <PlatformSelector OnSelectPlatform={(platform)=>setSelectedPlatform(platform)}  SelectedPlatform={SelectedPlatform}/>
-          <Gamegrid  SelectedPlatform={SelectedPlatform} SelectedGenre={SelectedGenre} />
+          <HStack>
+            <PlatformSelector
+              OnSelectPlatform={(platform) => setSelectedPlatform(platform)}
+              SelectedPlatform={SelectedPlatform}
+            />
+            <SortList  />
+          </HStack>
+          <Gamegrid
+            SelectedPlatform={SelectedPlatform}
+            SelectedGenre={SelectedGenre}
+            
+          />
         </GridItem>
       </Grid>
     </>

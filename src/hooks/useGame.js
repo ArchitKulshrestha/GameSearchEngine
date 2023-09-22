@@ -5,7 +5,7 @@ import useData from "./Usedata";
 const useGame = (SelectedGenre, SelectedPlatform) =>
   useData(
     "/games",
-    { params: { genres: SelectedGenre?.id, platforms: SelectedPlatform?.id } },
+    { params: { genres: SelectedGenre?.id, platforms: SelectedPlatform?.id }},
     [SelectedGenre?.id, SelectedPlatform?.id]
   );
 
