@@ -14,6 +14,7 @@ function App() {
     genre: null,
     platform: null,
     sortOrder: "",
+    search: "",
   });
 
   return (
@@ -24,7 +25,9 @@ function App() {
           lg: `"nav nav" "aside  main"`,
         }}>
         <GridItem gridArea="nav">
-          <NavBar />
+          <NavBar
+            onSearch={(search) => setGameQuery({ ...gameQuery, search })}
+          />
         </GridItem>
         <Show above="lg">
           <GridItem gridArea="aside" paddingLeft={3}>
