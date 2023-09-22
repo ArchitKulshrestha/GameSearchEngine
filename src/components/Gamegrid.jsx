@@ -15,7 +15,7 @@ const Gamegrid = ({ gameQuery }) => {
           No games found for this platform
         </Text>
       )} */}
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={5} padding={8}>
+      <SimpleGrid columns={{ sm: 2, md: 2, lg: 3, xl: 4 }} gap={5} padding={8}>
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
 
