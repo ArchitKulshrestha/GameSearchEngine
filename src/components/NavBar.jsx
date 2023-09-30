@@ -13,13 +13,7 @@ const NavBar = ({ onSearch }) => {
       paddingRight={"20px"}>
       <Box w="100px">
         <a href="/">
-          <Image
-            src={logo}
-            alt="logo"
-            boxSize={20}
-            boxShadow={"2xl"}
-            zIndex={20}
-          />
+          <Image src={logo} alt="logo" boxSize={20} />
         </a>
       </Box>
 
