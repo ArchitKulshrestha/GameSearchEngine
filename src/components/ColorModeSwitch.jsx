@@ -1,14 +1,19 @@
-import { HStack, Switch, Text,useColorMode } from "@chakra-ui/react"
-
+import { Button, Icon, useColorMode } from "@chakra-ui/react";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const ColorModeSwitch = () => {
-   const {toggleColorMode,colorMode}= useColorMode()
+  const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <HStack>
-        <Switch colorScheme="green" isChecked={colorMode==="dark"} onChange={toggleColorMode}/>
-        <Text fontSize={'13px'}>DarkMode</Text>
-    </HStack>
-  )
-}
+    <Button
+      size={"sm"}
+      variant={"ghost"}
+      textAlign={"center"}
+      onClick={toggleColorMode}>
+      <Icon fontSize={"20"}>
+        {colorMode === "light" ? <FaMoon /> : <FaSun />}
+      </Icon>
+    </Button>
+  );
+};
 
-export default ColorModeSwitch
+export default ColorModeSwitch;
